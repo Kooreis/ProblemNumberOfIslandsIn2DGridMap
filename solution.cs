@@ -1,16 +1,21 @@
-using System;
-
-class Program
-{
-    static void Main(string[] args)
+public static int NumIslands(char[][] grid)
     {
-        char[][] grid = new char[][]
+        if (grid == null || grid.Length == 0)
         {
-            new char[] {'1','1','1','1','0'},
-            new char[] {'1','1','0','1','0'},
-            new char[] {'1','1','0','0','0'},
-            new char[] {'0','0','0','0','0'}
-        };
+            return 0;
+        }
 
-        Console.WriteLine("Number of islands is: " + NumIslands(grid));
+        int numIslands = 0;
+        for (int i = 0; i < grid.Length; i++)
+        {
+            for (int j = 0; j < grid[i].Length; j++)
+            {
+                if (grid[i][j] == '1')
+                {
+                    numIslands += Dfs(grid, i, j);
+                }
+            }
+        }
+
+        return numIslands;
     }
