@@ -1,14 +1,16 @@
-import java.util.Scanner;
+public static int numIslands(int[][] grid) {
+        if (grid == null || grid.length == 0) {
+            return 0;
+        }
 
-public class Main {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        int m = scanner.nextInt();
-        int n = scanner.nextInt();
-        int[][] grid = new int[m][n];
-        for (int i = 0; i < m; i++) {
-            for (int j = 0; j < n; j++) {
-                grid[i][j] = scanner.nextInt();
+        int numIslands = 0;
+        for (int i = 0; i < grid.length; i++) {
+            for (int j = 0; j < grid[i].length; j++) {
+                if (grid[i][j] == 1) {
+                    numIslands += dfs(grid, i, j);
+                }
             }
         }
+
+        return numIslands;
     }
